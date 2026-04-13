@@ -1,0 +1,1090 @@
+<!DOCTYPE html>
+<html lang="pt-BR" class="scroll-smooth">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Jornada Capilar Feminina — Grand Vie</title>
+  <meta name="description" content="Trate o afinamento capilar com diagnóstico dermatológico, acolhimento e direção. Jornada Capilar Feminina Grand Vie — Brasília/DF." />
+  <link rel="icon" type="image/webp" href="imagens/logo.webp" />
+
+  <!-- Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500;1,600&family=Montserrat:wght@300;400;500;600;700&display=swap" rel="stylesheet" />
+
+  <!-- Tailwind v4 CDN -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          fontFamily: {
+            playfair: ['Playfair Display', 'serif'],
+            montserrat: ['Montserrat', 'sans-serif'],
+          },
+          colors: {
+            navy: '#0A1A2B',
+            richblack: '#121212',
+            sand: '#F5F5F0',
+            gold: '#D4AF37',
+          },
+          animation: {
+            'fade-up': 'fadeUp 0.8s ease forwards',
+            'fade-in': 'fadeIn 0.6s ease forwards',
+          },
+          keyframes: {
+            fadeUp: {
+              '0%': { opacity: '0', transform: 'translateY(28px)' },
+              '100%': { opacity: '1', transform: 'translateY(0)' },
+            },
+            fadeIn: {
+              '0%': { opacity: '0' },
+              '100%': { opacity: '1' },
+            },
+          },
+        },
+      },
+    };
+  </script>
+
+  <style>
+    /* ── base ── */
+    *, *::before, *::after { box-sizing: border-box; }
+    html { background: #0A1A2B; overflow-x: clip; }
+    body {
+      background: #0A1A2B;
+      color: #F5F5F0;
+      font-family: 'Montserrat', sans-serif;
+      -webkit-font-smoothing: antialiased;
+      overflow-x: clip;
+    }
+
+    /* ── noise texture overlay ── */
+    body::before {
+      content: '';
+      position: fixed;
+      inset: 0;
+      background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.03'/%3E%3C/svg%3E");
+      pointer-events: none;
+      z-index: 0;
+      opacity: 0.4;
+    }
+
+    /* ── glass card ── */
+    .glass {
+      background: rgba(255,255,255,0.04);
+      backdrop-filter: blur(12px);
+      -webkit-backdrop-filter: blur(12px);
+      border: 1px solid rgba(255,255,255,0.09);
+      border-radius: 1rem;
+    }
+
+    /* ── gold divider ── */
+    .gold-rule {
+      width: 48px; height: 2px;
+      background: linear-gradient(90deg, #D4AF37, transparent);
+      border-radius: 2px;
+    }
+
+    /* ── portrait image wrapper ── */
+    .portrait-wrap {
+      position: relative;
+      border-radius: 1.25rem;
+      overflow: hidden;
+    }
+    .portrait-wrap::after {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(180deg, transparent 60%, rgba(10,26,43,0.55) 100%);
+      pointer-events: none;
+    }
+    .portrait-halo {
+      position: absolute;
+      inset: -24px;
+      background: radial-gradient(ellipse at center, rgba(212,175,55,0.14) 0%, transparent 70%);
+      pointer-events: none;
+      z-index: -1;
+      border-radius: 2rem;
+    }
+
+    /* ── FAQ accordion ── */
+    .faq-answer {
+      max-height: 0;
+      overflow: hidden;
+      transition: max-height 0.4s ease, padding 0.3s ease;
+    }
+    .faq-answer.open {
+      max-height: 300px;
+    }
+    .faq-icon {
+      transition: transform 0.35s ease;
+      font-size: 1.35rem;
+      line-height: 1;
+      color: #D4AF37;
+      flex-shrink: 0;
+    }
+    .faq-item.open .faq-icon {
+      transform: rotate(45deg);
+    }
+
+    /* ── CTA button ── */
+    .btn-gold {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      white-space: nowrap;
+      word-break: keep-all;
+      background: #D4AF37;
+      color: #0A1A2B;
+      font-family: 'Montserrat', sans-serif;
+      font-weight: 700;
+      font-size: 0.82rem;
+      letter-spacing: 0.07em;
+      text-transform: uppercase;
+      padding: 0.9rem 2rem;
+      border-radius: 0.75rem;
+      transition: filter 0.2s ease, transform 0.15s ease;
+      text-decoration: none;
+    }
+    .btn-gold:hover {
+      filter: brightness(1.12);
+      transform: translateY(-1px);
+    }
+    .btn-gold:active { transform: translateY(0); }
+
+    /* mobile: botões de largura total se necessário */
+    @media (max-width: 640px) {
+      .btn-gold-anim, .btn-gold {
+        font-size: 0.65rem;
+        padding: 0.7rem 0.9rem;
+        letter-spacing: 0.02em;
+        max-width: 100%;
+        box-sizing: border-box;
+        white-space: normal;
+        text-align: center;
+        line-height: 1.35;
+      }
+      /* botões self-start viram full width em mobile */
+      .btn-gold-anim.self-start {
+        align-self: stretch;
+        text-align: center;
+      }
+      /* footer empilha em mobile */
+      footer .max-w-7xl {
+        flex-direction: column !important;
+        height: auto !important;
+        padding-top: 1.5rem;
+        padding-bottom: 1.5rem;
+        gap: 0.75rem;
+        text-align: center;
+      }
+      /* header altura em mobile */
+      #site-header {
+        height: 5rem !important;
+      }
+      main#hero {
+        padding-top: 5rem !important;
+      }
+    }
+
+    @media (max-width: 380px) {
+      .btn-gold-anim, .btn-gold {
+        font-size: 0.58rem;
+        padding: 0.65rem 0.75rem;
+        letter-spacing: 0em;
+        white-space: normal;
+        text-align: center;
+        line-height: 1.35;
+      }
+    }
+
+    /* garantir que botões nunca ultrapassem o pai */
+    .btn-gold-anim, .btn-gold {
+      max-width: 100%;
+      box-sizing: border-box;
+    }
+
+    /* botão de largura total — para textos longos no mobile */
+    @media (max-width: 640px) {
+      .btn-full-mobile {
+        display: flex !important;
+        width: 100% !important;
+        white-space: normal !important;
+        text-align: center !important;
+        line-height: 1.35 !important;
+      }
+    }
+
+    /* ── CTA button animado — animação removida, estilo padrão ── */
+    .btn-gold-anim {
+      position: relative;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      white-space: nowrap;
+      word-break: keep-all;
+      background: #D4AF37;
+      color: #0A1A2B;
+      font-family: 'Montserrat', sans-serif;
+      font-weight: 700;
+      font-size: 0.82rem;
+      letter-spacing: 0.07em;
+      text-transform: uppercase;
+      padding: 0.9rem 2rem;
+      border-radius: 0.75rem;
+      text-decoration: none;
+      transition: filter 0.2s ease, transform 0.15s ease;
+    }
+    .btn-gold-anim:hover {
+      filter: brightness(1.12);
+      transform: translateY(-1px);
+    }
+    .btn-gold-anim:active { transform: translateY(0); }
+    .btn-gold-anim span { display: none; }
+
+    /* ── scroll reveal ── */
+    .reveal {
+      opacity: 0;
+      transform: translateY(32px);
+      transition: opacity 0.7s ease, transform 0.7s ease;
+    }
+    .reveal.visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    /* ── sticky header shadow ── */
+    .header-scrolled {
+      box-shadow: 0 1px 24px rgba(0,0,0,0.55);
+    }
+
+    /* ── badge ── */
+    .badge-gold {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.3rem;
+      background: #D4AF37;
+      color: #0A1A2B;
+      font-family: 'Montserrat', sans-serif;
+      font-weight: 700;
+      font-size: 0.7rem;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      padding: 0.3rem 0.85rem;
+      border-radius: 999px;
+    }
+
+    /* ── card highlight ring ── */
+    .card-highlight {
+      border-color: rgba(212,175,55,0.45) !important;
+      box-shadow: 0 0 0 1px rgba(212,175,55,0.18), 0 8px 48px rgba(0,0,0,0.5);
+    }
+
+    /* ── eyebrow ── */
+    .eyebrow {
+      font-family: 'Montserrat', sans-serif;
+      font-size: 0.7rem;
+      font-weight: 600;
+      letter-spacing: 0.28em;
+      text-transform: uppercase;
+      color: #D4AF37;
+    }
+
+    /* checklist item — refined, no emoji */
+    .check-item {
+      display: flex;
+      align-items: center;
+      gap: 1rem;
+      padding: 0.85rem 0;
+      border-bottom: 1px solid rgba(255,255,255,0.07);
+      background: none;
+      border-radius: 0;
+    }
+    .check-item:first-child { padding-top: 0; }
+    .check-item::before {
+      content: '';
+      flex-shrink: 0;
+      width: 5px;
+      height: 5px;
+      border-radius: 50%;
+      background: #D4AF37;
+      box-shadow: 0 0 6px rgba(212,175,55,0.5);
+    }
+    .check-item span.emoji { display: none; }
+
+    /* checklist item with icon — for benefit cards */
+    .check-item-card {
+      display: flex;
+      align-items: flex-start;
+      gap: 0.75rem;
+      padding: 1rem 1.25rem;
+      background: rgba(255,255,255,0.04);
+      border: 1px solid rgba(255,255,255,0.08);
+      border-radius: 0.875rem;
+    }
+    .check-item-card span.emoji {
+      font-size: 1.1rem;
+      flex-shrink: 0;
+      margin-top: 0.05rem;
+    }
+
+    /* subtle bg alt */
+    .bg-alt { background: #121212; }
+    .bg-navy { background: #0A1A2B; }
+  </style>
+
+  <!-- Meta Pixel Code -->
+  <script>
+    !function(f,b,e,v,n,t,s){
+      if(f.fbq)return;
+      n=f.fbq=function(){n.callMethod?n.callMethod.apply(n,arguments):n.queue.push(arguments)};
+      if(!f._fbq)f._fbq=n;
+      n.push=n;n.loaded=!0;n.version='2.0';n.queue=[];
+      t=b.createElement(e);t.async=!0;
+      t.src=v;s=b.getElementsByTagName(e)[0];
+      s.parentNode.insertBefore(t,s)
+    }(window,document,'script','https://connect.facebook.net/en_US/fbevents.js');
+    fbq('init','808759498896377');
+    fbq('track','PageView');
+  </script>
+  <noscript>
+    <img height="1" width="1" style="display:none"
+         src="https://www.facebook.com/tr?id=808759498896377&ev=PageView&noscript=1"/>
+  </noscript>
+  <!-- End Meta Pixel Code -->
+</head>
+
+<body class="relative z-10">
+
+  <!-- partículas douradas de fundo -->
+  <canvas id="particles-canvas" style="position:fixed;inset:0;width:100%;height:100%;pointer-events:none;z-index:0;"></canvas>
+
+  <!-- ═══════════════════════════════════════════════
+       HEADER
+  ═══════════════════════════════════════════════ -->
+  <header id="site-header" class="bg-navy fixed top-0 left-0 right-0 z-50 border-b border-white/[0.07] transition-all duration-300" style="height:7.5rem;">
+    <div class="max-w-7xl mx-auto px-5 sm:px-8 h-full flex items-center justify-between overflow-visible">
+      <a href="#" aria-label="Grand Vie" style="overflow:visible;">
+        <img src="imagens/logo.webp" alt="Grand Vie" class="h-32 w-auto" />
+      </a>
+      <a href="#planos" class="btn-gold text-xs px-4 py-2 sm:text-sm sm:px-8 sm:py-4 inline-flex">
+        Ver Planos
+      </a>
+    </div>
+  </header>
+
+
+  <!-- ═══════════════════════════════════════════════
+       HERO — #0A1A2B
+  ═══════════════════════════════════════════════ -->
+  <main id="hero" class="bg-navy pt-[7.5rem] overflow-hidden">
+    <div class="max-w-7xl mx-auto px-5 sm:px-8 py-16 md:py-24 lg:py-28">
+      <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-16 items-center">
+
+        <!-- LEFT: copy -->
+        <div class="flex flex-col gap-6 order-2 lg:order-1 animate-fade-up">
+          <p class="eyebrow">Jornada Capilar Feminina</p>
+          <div class="gold-rule"></div>
+
+          <h1 class="font-playfair text-[2.1rem] sm:text-[2.7rem] xl:text-[3.2rem] leading-[1.18] text-sand">
+            O mapa certo para tratar o
+            <em class="font-playfair italic text-gold not-italic" style="font-style:italic"> afinamento capilar</em>
+            antes que ele roube mais volume, força e
+            <em class="font-playfair italic text-gold" style="font-style:italic">sua identidade.</em>
+          </h1>
+
+          <p class="font-montserrat text-base text-sand/70 leading-relaxed max-w-[520px]">
+            Faça parte da Jornada Capilar Feminina Grand Vie e trate sua queda com diagnóstico dermatológico, acolhimento e direção — para entender o que está acontecendo com o seu cabelo e qual é o caminho mais inteligente para recuperar o que ainda responde.
+          </p>
+
+          <!-- trust pills -->
+          <ul class="flex flex-wrap gap-2 mt-1" role="list">
+            <li class="flex items-center gap-2 text-xs text-sand/60 font-montserrat bg-white/5 border border-white/10 rounded-full px-3 py-1.5">
+              <span class="text-gold">✦</span> Tratamentos personalizados
+            </li>
+            <li class="flex items-center gap-2 text-xs text-sand/60 font-montserrat bg-white/5 border border-white/10 rounded-full px-3 py-1.5">
+              <span class="text-gold">✦</span> Acompanhamento médico
+            </li>
+            <li class="flex items-center gap-2 text-xs text-sand/60 font-montserrat bg-white/5 border border-white/10 rounded-full px-3 py-1.5">
+              <span class="text-gold">✦</span> Protocolo individualizado
+            </li>
+          </ul>
+
+          <div class="mt-2">
+            <a href="#planos" class="btn-gold-anim text-sm px-8 py-4 shadow-lg shadow-yellow-900/20"><span></span><span></span><span></span><span></span>
+              Quero Começar Agora
+            </a>
+          </div>
+        </div>
+
+        <!-- RIGHT: LCP image -->
+        <div class="order-1 lg:order-2 flex justify-center lg:justify-end">
+          <div class="relative w-full max-w-[340px] sm:max-w-[380px] lg:max-w-[420px]">
+            <div class="portrait-halo"></div>
+            <div class="portrait-wrap shadow-2xl shadow-black/70 border border-white/10">
+              <!-- LCP IMAGE -->
+              <img
+                src="imagens/dra-capilar-1.webp"
+                alt="Dra. Maria Clara Canedo — Especialista em Saúde Capilar Feminina"
+                width="480"
+                height="853"
+                fetchpriority="high"
+                decoding="async"
+                class="w-full object-cover block"
+              />
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </main>
+
+
+  <!-- ═══════════════════════════════════════════════
+       PROVA SOCIAL — #121212
+  ═══════════════════════════════════════════════ -->
+  <section id="identificacao-e-prova" class="bg-alt overflow-hidden">
+    <div class="max-w-7xl mx-auto px-5 sm:px-8 py-20 flex flex-col gap-16">
+
+      <!-- depoimentos -->
+      <div class="reveal flex flex-col items-center gap-8 text-center">
+        <p class="eyebrow">Quem já decidiu tratar em vez de esperar, recomenda</p>
+        <div class="gold-rule mx-auto"></div>
+
+        <div class="w-full rounded-2xl overflow-hidden border border-white/10 shadow-2xl shadow-black/60">
+          <!-- lazy image -->
+          <picture>
+            <source media="(min-width: 768px)" srcset="imagens/depoimentos-desk.webp" width="1200" height="480" />
+            <img
+              src="imagens/depoimentos-mob.webp"
+              loading="lazy"
+              decoding="async"
+              alt="Depoimentos de pacientes da Jornada Capilar Feminina Grand Vie"
+              width="640"
+              height="480"
+              class="w-full object-cover block"
+            />
+          </picture>
+        </div>
+
+        <a href="#planos" class="btn-gold-anim"><span></span><span></span><span></span><span></span>
+          Quero Começar Meu Tratamento
+        </a>
+      </div>
+
+      <!-- identificação -->
+      <div class="reveal grid grid-cols-1 lg:grid-cols-[1fr_380px] gap-12 lg:gap-20 items-stretch">
+
+        <!-- texto -->
+        <div class="flex flex-col gap-7">
+          <div>
+            <p class="eyebrow">Identificação</p>
+            <div class="gold-rule mt-3 mb-5"></div>
+            <h2 class="font-playfair text-[1.95rem] sm:text-[2.4rem] leading-snug text-sand">
+              A Jornada é pra você que…
+            </h2>
+          </div>
+
+          <ul class="flex flex-col" role="list">
+            <li class="check-item">
+              <p class="font-montserrat text-sm text-sand/80 leading-relaxed">Percebeu a risca mais aberta</p>
+            </li>
+            <li class="check-item">
+              <p class="font-montserrat text-sm text-sand/80 leading-relaxed">Sente o cabelo mais ralo e com menos volume</p>
+            </li>
+            <li class="check-item">
+              <p class="font-montserrat text-sm text-sand/80 leading-relaxed">Vê mais fios na escova, no travesseiro e no ralo</p>
+            </li>
+            <li class="check-item">
+              <p class="font-montserrat text-sm text-sand/80 leading-relaxed">Já tentou vitaminas, shampoos ou tônicos sem clareza real</p>
+            </li>
+            <li class="check-item">
+              <p class="font-montserrat text-sm text-sand/80 leading-relaxed">Quer entender por que o cabelo perdeu força</p>
+            </li>
+            <li class="check-item" style="border-bottom:none;">
+              <p class="font-montserrat text-sm text-sand/80 leading-relaxed">Quer agir antes que o afinamento avance mais</p>
+            </li>
+          </ul>
+
+          <div class="pt-6 border-t border-white/10">
+            <p class="font-playfair italic text-gold text-lg mb-5" style="font-style:italic">E também para você que…</p>
+            <ul class="flex flex-col" role="list">
+              <li class="check-item">
+                <p class="font-montserrat text-sm text-sand/80 leading-relaxed">Está no pós-parto, sob estresse ou em mudança hormonal e não sabe se isso explica tudo</p>
+              </li>
+              <li class="check-item">
+                <p class="font-montserrat text-sm text-sand/80 leading-relaxed">Sente que o cabelo já não traduz a mesma presença de antes</p>
+              </li>
+              <li class="check-item">
+                <p class="font-montserrat text-sm text-sand/80 leading-relaxed">Quer uma abordagem médica, não cosmética</p>
+              </li>
+              <li class="check-item" style="border-bottom:none;">
+                <p class="font-montserrat text-sm text-sand/80 leading-relaxed">Quer recuperar densidade, saúde e segurança</p>
+              </li>
+            </ul>
+          </div>
+
+          <div class="mt-2 flex justify-center sm:justify-start">
+            <a href="#planos" class="btn-gold-anim"><span></span><span></span><span></span><span></span>
+              Quero Esse Acompanhamento
+            </a>
+          </div>
+        </div>
+
+        <!-- imagem — ocupa altura total da coluna -->
+        <div class="relative hidden lg:flex">
+          <div class="portrait-halo"></div>
+          <div class="portrait-wrap shadow-2xl shadow-black/60 border border-white/10 w-full h-full" style="min-height:520px;">
+            <img
+              src="imagens/dra-capilar-2.webp"
+              loading="lazy"
+              decoding="async"
+              alt="Dra. Maria Clara Canedo em consulta capilar"
+              width="420"
+              height="640"
+              class="w-full h-full object-cover object-top block"
+              style="position:absolute;inset:0;"
+            />
+          </div>
+        </div>
+
+        <!-- imagem mobile — abaixo do texto, tamanho proporcional -->
+        <div class="relative flex justify-center lg:hidden">
+          <div class="relative w-full max-w-[320px] sm:max-w-[400px]">
+            <div class="portrait-halo"></div>
+            <div class="portrait-wrap shadow-2xl shadow-black/60 border border-white/10">
+              <img
+                src="imagens/dra-capilar-2.webp"
+                loading="lazy"
+                decoding="async"
+                alt="Dra. Maria Clara Canedo em consulta capilar"
+                width="480"
+                height="640"
+                class="w-full object-cover object-top block"
+              />
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+
+  <!-- ═══════════════════════════════════════════════
+       NÃO É SÓ QUEDA — #0A1A2B
+  ═══════════════════════════════════════════════ -->
+  <section id="nao-e-so-queda" class="bg-navy overflow-hidden">
+    <div class="max-w-7xl mx-auto px-5 sm:px-8 py-20">
+      <div class="grid grid-cols-1 lg:grid-cols-2 gap-14 lg:gap-20 items-center">
+
+        <!-- left: benefits -->
+        <div class="reveal flex flex-col gap-8">
+          <div class="flex flex-col gap-4">
+            <p class="eyebrow">O que você vai recuperar</p>
+            <div class="gold-rule"></div>
+            <h2 class="font-playfair text-[1.95rem] sm:text-[2.4rem] leading-snug text-sand">
+              Você não vai só
+              <em class="font-playfair italic text-gold" style="font-style:italic">tratar queda</em>
+            </h2>
+            <p class="font-montserrat text-base text-sand/70 leading-relaxed">
+              Você vai recuperar a sensação de que o seu cabelo ainda conversa com quem você é.
+            </p>
+          </div>
+
+          <ul class="flex flex-col gap-3" role="list">
+            <li class="check-item-card">
+              <span class="emoji">✅</span>
+              <div>
+                <p class="font-montserrat text-sm font-semibold text-sand mb-1">Diagnóstico que esclarece</p>
+                <p class="font-montserrat text-xs text-sand/65 leading-relaxed">Você entende por que o cabelo perdeu força e para de tratar no escuro.</p>
+              </div>
+            </li>
+            <li class="check-item-card">
+              <span class="emoji">✅</span>
+              <div>
+                <p class="font-montserrat text-sm font-semibold text-sand mb-1">Direção que organiza</p>
+                <p class="font-montserrat text-xs text-sand/65 leading-relaxed">Um plano pensado para o seu estágio, não uma sequência de tentativas.</p>
+              </div>
+            </li>
+            <li class="check-item-card">
+              <span class="emoji">✅</span>
+              <div>
+                <p class="font-montserrat text-sm font-semibold text-sand mb-1">Mais chance de recuperar o que ainda responde</p>
+                <p class="font-montserrat text-xs text-sand/65 leading-relaxed">Agir na hora certa muda o que ainda pode ser preservado e fortalecido.</p>
+              </div>
+            </li>
+            <li class="check-item-card">
+              <span class="emoji">✅</span>
+              <div>
+                <p class="font-montserrat text-sm font-semibold text-sand mb-1">Acompanhamento de verdade</p>
+                <p class="font-montserrat text-xs text-sand/65 leading-relaxed">Não é compra impulsiva, é jornada com critério.</p>
+              </div>
+            </li>
+            <li class="check-item-card">
+              <span class="emoji">✅</span>
+              <div>
+                <p class="font-montserrat text-sm font-semibold text-sand mb-1">Mais segurança no espelho</p>
+                <p class="font-montserrat text-xs text-sand/65 leading-relaxed">A meta não é só "cair menos", é recuperar volume, densidade e a sensação de cabelo saudável.</p>
+              </div>
+            </li>
+          </ul>
+
+          <div class="flex flex-col sm:flex-row gap-4 mt-2">
+            <a
+              href="https://api.whatsapp.com/send/?phone=556132549472&text=Ol%C3%A1%21%20Vim%20pela%20Jornada%20Capilar%20Feminina%20da%20Dra.%20Maria%20Clara%20Canedo%20e%20gostaria%20de%20entender%20melhor%20meu%20caso%20e%20como%20funciona%20o%20protocolo%20para%20iniciar%20o%20tratamento.&type=phone_number&app_absent=0" data-wa-btn
+              target="_blank" rel="noopener noreferrer"
+              class="btn-gold-anim"
+            ><span></span><span></span><span></span><span></span>
+              Quero Esse Acompanhamento
+            </a>
+          </div>
+        </div>
+
+        <!-- right: image -->
+        <div class="reveal flex justify-center lg:justify-end">
+          <div class="relative w-full max-w-[320px] sm:max-w-[360px]">
+            <div class="portrait-halo"></div>
+            <div class="portrait-wrap shadow-2xl shadow-black/60 border border-white/10">
+              <!-- lazy image -->
+              <img
+                src="imagens/dra-capilar-3.webp"
+                loading="lazy"
+                decoding="async"
+                alt="Diagnóstico capilar feminino Grand Vie"
+                width="480"
+                height="853"
+                class="w-full object-cover block"
+              />
+            </div>
+          </div>
+        </div>
+
+      </div>
+
+      <!-- urgência sub-bloco -->
+      <div class="reveal mt-20 glass p-8 md:p-12 text-center max-w-3xl mx-auto flex flex-col gap-5 items-center">
+        <p class="eyebrow">Cada mês conta</p>
+        <div class="gold-rule mx-auto"></div>
+        <h3 class="font-playfair text-[1.7rem] sm:text-[2.1rem] leading-snug text-sand">
+          Se o afinamento acontece aos poucos, o
+          <em class="font-playfair italic text-gold" style="font-style:italic">cuidado precisa acompanhar</em>
+          cada fase
+        </h3>
+        <p class="font-montserrat text-sm text-sand/70 leading-relaxed max-w-xl">
+          A Jornada Capilar Feminina foi pensada para você não viver entre espera, dúvida e tentativa. Cada fase do acompanhamento existe para entender o seu momento, tratar a causa e direcionar os próximos passos com mais segurança.
+        </p>
+        <a href="#planos" class="btn-gold-anim mt-2"><span></span><span></span><span></span><span></span>
+          Quero Esse Acompanhamento
+        </a>
+      </div>
+    </div>
+  </section>
+
+
+  <!-- ═══════════════════════════════════════════════
+       OFERTA — #121212
+  ═══════════════════════════════════════════════ -->
+  <section id="planos" class="bg-alt overflow-hidden">
+    <div class="max-w-7xl mx-auto px-5 sm:px-8 py-20 flex flex-col gap-16">
+
+      <!-- urgência header -->
+      <div class="reveal text-center flex flex-col gap-4 items-center max-w-3xl mx-auto">
+        <p class="eyebrow">Cada mês conta</p>
+        <div class="gold-rule mx-auto"></div>
+        <h2 class="font-playfair text-[2rem] sm:text-[2.6rem] leading-snug text-sand">
+          O maior erro na queda capilar feminina é
+          <em class="font-playfair italic text-gold" style="font-style:italic">esperar demais</em>
+        </h2>
+        <p class="font-montserrat text-base text-sand/70 leading-relaxed">
+          Esperar "passar", esperar o estresse diminuir, esperar o cabelo voltar ao normal sozinho. Enquanto isso, o fio afina, o volume cai e o cabelo vai deixando de responder como antes. A Jornada ajuda a agir no momento em que ainda há muito a preservar e recuperar.
+        </p>
+        <a
+          href="https://api.whatsapp.com/send/?phone=556132549472&text=Ol%C3%A1%21%20Vim%20pela%20Jornada%20Capilar%20Feminina%20da%20Dra.%20Maria%20Clara%20Canedo%20e%20gostaria%20de%20entender%20melhor%20meu%20caso%20e%20como%20funciona%20o%20protocolo%20para%20iniciar%20o%20tratamento.&type=phone_number&app_absent=0" data-wa-btn
+          target="_blank" rel="noopener noreferrer"
+          class="btn-gold-anim mt-2"
+        ><span></span><span></span><span></span><span></span>
+          Quero Esse Acompanhamento
+        </a>
+      </div>
+
+      <!-- localização + sem pegadinha -->
+      <div class="reveal glass max-w-2xl mx-auto w-full p-8 flex flex-col gap-6 items-center text-center overflow-hidden">
+        <p class="eyebrow">Localização</p>
+        <div class="gold-rule mx-auto"></div>
+        <h3 class="font-playfair text-xl text-sand">
+          Grand Vie — Brasília / DF · Águas Claras
+        </h3>
+        <p class="font-montserrat text-sm text-sand/65 leading-relaxed">
+          Atendimento para mulheres que querem tratar afinamento capilar com mais direção, sensibilidade e critério médico.
+        </p>
+        <div class="border-t border-white/10 pt-5 w-full">
+          <p class="font-playfair italic text-gold text-base mb-3">Sem pegadinha</p>
+          <p class="font-montserrat text-sm text-sand/65 leading-relaxed">
+            Você fala com a equipe no WhatsApp, entende como funciona a Jornada, tira dúvidas, vê valores e descobre qual caminho faz mais sentido para o seu caso.
+          </p>
+        </div>
+        <a
+          href="https://api.whatsapp.com/send/?phone=556132549472&text=Ol%C3%A1%21%20Vim%20pela%20Jornada%20Capilar%20Feminina%20da%20Dra.%20Maria%20Clara%20Canedo%20e%20gostaria%20de%20entender%20melhor%20meu%20caso%20e%20como%20funciona%20o%20protocolo%20para%20iniciar%20o%20tratamento.&type=phone_number&app_absent=0" data-wa-btn
+          target="_blank" rel="noopener noreferrer"
+          class="btn-gold-anim btn-full-mobile"
+        ><span></span><span></span><span></span><span></span>
+          Falar com Atendimento no WhatsApp
+        </a>
+      </div>
+
+    </div>
+  </section>
+
+
+  <!-- ═══════════════════════════════════════════════
+       QUEM TE ACOMPANHA — #0A1A2B
+  ═══════════════════════════════════════════════ -->
+  <section id="quem-te-acompanha" class="bg-navy overflow-hidden">
+    <div class="max-w-7xl mx-auto px-5 sm:px-8 py-20">
+      <div class="grid grid-cols-1 lg:grid-cols-2 gap-14 lg:gap-20 items-center">
+
+        <!-- imagem -->
+        <div class="reveal flex justify-center lg:justify-start">
+          <div class="relative w-full max-w-[320px] sm:max-w-[360px]">
+            <div class="portrait-halo"></div>
+            <div class="portrait-wrap shadow-2xl shadow-black/60 border border-white/10">
+              <!-- lazy image -->
+              <img
+                src="imagens/dra-capilar-4.webp"
+                loading="lazy"
+                decoding="async"
+                alt="Dra. Maria Clara Canedo — apresentação clínica"
+                width="480"
+                height="853"
+                class="w-full object-cover block"
+              />
+            </div>
+          </div>
+        </div>
+
+        <!-- copy -->
+        <div class="reveal flex flex-col gap-7">
+          <div class="flex flex-col gap-4">
+            <p class="eyebrow">Quem irá te acompanhar</p>
+            <div class="gold-rule"></div>
+            <h2 class="font-playfair text-[1.95rem] sm:text-[2.4rem] leading-snug text-sand">
+              A Grand Vie conduz a queda capilar feminina com
+              <em class="font-playfair italic text-gold" style="font-style:italic">lógica dermatológica</em>
+            </h2>
+            <p class="font-montserrat text-base text-sand/70 leading-relaxed">
+              Aqui, a proposta não é vender produto para cabelo. É entender o que está causando o seu quadro, em que estágio ele está e como tratar com mais coerência.
+            </p>
+            <p class="font-montserrat text-base text-sand/70 leading-relaxed">
+              O foco é recuperar força, densidade e a sensação de cabelo saudável, com acompanhamento e direção.
+            </p>
+          </div>
+
+          <ul class="flex flex-col gap-3" role="list">
+            <li class="glass px-5 py-4 flex items-center gap-3">
+              <span class="text-gold text-lg">◈</span>
+              <span class="font-montserrat text-sm text-sand/80">Leitura clínica individualizada</span>
+            </li>
+            <li class="glass px-5 py-4 flex items-center gap-3">
+              <span class="text-gold text-lg">◈</span>
+              <span class="font-montserrat text-sm text-sand/80">Protocolo terapêutico por estágio</span>
+            </li>
+            <li class="glass px-5 py-4 flex items-center gap-3">
+              <span class="text-gold text-lg">◈</span>
+              <span class="font-montserrat text-sm text-sand/80">Abordagem médica, não cosmética</span>
+            </li>
+            <li class="glass px-5 py-4 flex items-center gap-3">
+              <span class="text-gold text-lg">◈</span>
+              <span class="font-montserrat text-sm text-sand/80">Acompanhamento com direção em cada fase</span>
+            </li>
+          </ul>
+
+          <a
+            href="https://api.whatsapp.com/send/?phone=556132549472&text=Ol%C3%A1%21%20Vim%20pela%20Jornada%20Capilar%20Feminina%20da%20Dra.%20Maria%20Clara%20Canedo%20e%20gostaria%20de%20entender%20melhor%20meu%20caso%20e%20como%20funciona%20o%20protocolo%20para%20iniciar%20o%20tratamento.&type=phone_number&app_absent=0" data-wa-btn
+            target="_blank" rel="noopener noreferrer"
+            class="btn-gold-anim self-start"
+          ><span></span><span></span><span></span><span></span>
+            Quero Esse Acompanhamento
+          </a>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+
+  <!-- ═══════════════════════════════════════════════
+       FAQ — #121212
+  ═══════════════════════════════════════════════ -->
+  <section id="faq" class="bg-alt overflow-hidden">
+    <div class="max-w-7xl mx-auto px-5 sm:px-8 py-20 flex flex-col gap-16">
+
+      <!-- header -->
+      <div class="reveal text-center flex flex-col gap-4 items-center">
+        <p class="eyebrow">Perguntas frequentes</p>
+        <div class="gold-rule mx-auto"></div>
+        <h2 class="font-playfair text-[1.95rem] sm:text-[2.5rem] leading-snug text-sand max-w-2xl">
+          Queda Capilar Feminina —
+          <em class="font-playfair italic text-gold" style="font-style:italic">suas dúvidas respondidas</em>
+        </h2>
+      </div>
+
+      <!-- accordion centralizado -->
+      <div class="reveal w-full max-w-3xl mx-auto flex flex-col gap-3" id="faq-list">
+
+        <div class="faq-item glass overflow-hidden">
+          <button class="faq-trigger w-full px-6 py-5 flex items-center justify-between gap-4 text-left">
+            <span class="font-montserrat text-sm font-medium text-sand leading-snug">
+              Essa jornada é só para quem está com queda intensa?
+            </span>
+            <span class="faq-icon">+</span>
+          </button>
+          <div class="faq-answer px-6 font-montserrat text-sm text-sand/65 leading-relaxed">
+            <div class="pb-5">Não. Em muitos casos, agir cedo é o que ajuda a preservar e recuperar melhor o que ainda responde.</div>
+          </div>
+        </div>
+
+        <div class="faq-item glass overflow-hidden">
+          <button class="faq-trigger w-full px-6 py-5 flex items-center justify-between gap-4 text-left">
+            <span class="font-montserrat text-sm font-medium text-sand leading-snug">
+              Toda queda feminina é igual?
+            </span>
+            <span class="faq-icon">+</span>
+          </button>
+          <div class="faq-answer px-6 font-montserrat text-sm text-sand/65 leading-relaxed">
+            <div class="pb-5">Não. O padrão, a causa, o ritmo e a resposta ao tratamento podem ser bem diferentes.</div>
+          </div>
+        </div>
+
+        <div class="faq-item glass overflow-hidden">
+          <button class="faq-trigger w-full px-6 py-5 flex items-center justify-between gap-4 text-left">
+            <span class="font-montserrat text-sm font-medium text-sand leading-snug">
+              O que acontece quando eu clico em "Quero começar agora"?
+            </span>
+            <span class="faq-icon">+</span>
+          </button>
+          <div class="faq-answer px-6 font-montserrat text-sm text-sand/65 leading-relaxed">
+            <div class="pb-5">Você fala com a equipe no WhatsApp, explica sua queixa e entende qual Jornada faz mais sentido para o seu caso.</div>
+          </div>
+        </div>
+
+        <div class="faq-item glass overflow-hidden">
+          <button class="faq-trigger w-full px-6 py-5 flex items-center justify-between gap-4 text-left">
+            <span class="font-montserrat text-sm font-medium text-sand leading-snug">
+              O objetivo é só reduzir a queda?
+            </span>
+            <span class="faq-icon">+</span>
+          </button>
+          <div class="faq-answer px-6 font-montserrat text-sm text-sand/65 leading-relaxed">
+            <div class="pb-5">Não. O objetivo é recuperar força, densidade, saúde do couro cabeludo e segurança no espelho.</div>
+          </div>
+        </div>
+
+        <div class="faq-item glass overflow-hidden">
+          <button class="faq-trigger w-full px-6 py-5 flex items-center justify-between gap-4 text-left">
+            <span class="font-montserrat text-sm font-medium text-sand leading-snug">
+              Já tentei produtos e não resolveu. Ainda vale investigar?
+            </span>
+            <span class="faq-icon">+</span>
+          </button>
+          <div class="faq-answer px-6 font-montserrat text-sm text-sand/65 leading-relaxed">
+            <div class="pb-5">Sim. Produto sem diagnóstico costuma prolongar a frustração.</div>
+          </div>
+        </div>
+
+        <div class="faq-item glass overflow-hidden">
+          <button class="faq-trigger w-full px-6 py-5 flex items-center justify-between gap-4 text-left">
+            <span class="font-montserrat text-sm font-medium text-sand leading-snug">
+              Quanto tempo leva para notar evolução?
+            </span>
+            <span class="faq-icon">+</span>
+          </button>
+          <div class="faq-answer px-6 font-montserrat text-sm text-sand/65 leading-relaxed">
+            <div class="pb-5">Cada caso tem seu ritmo, mas agir na hora certa é decisivo para o prognóstico.</div>
+          </div>
+        </div>
+
+        <div class="faq-item glass overflow-hidden">
+          <button class="faq-trigger w-full px-6 py-5 flex items-center justify-between gap-4 text-left">
+            <span class="font-montserrat text-sm font-medium text-sand leading-snug">
+              Queda capilar feminina pode melhorar com tratamento?
+            </span>
+            <span class="faq-icon">+</span>
+          </button>
+          <div class="faq-answer px-6 font-montserrat text-sm text-sand/65 leading-relaxed">
+            <div class="pb-5">Quando o caso é corretamente avaliado e tratado, muitas mulheres conseguem recuperar densidade, força e resposta do cabelo.</div>
+          </div>
+        </div>
+
+      </div>
+
+      <!-- CTA centralizado -->
+      <div class="reveal flex justify-center px-4 sm:px-0">
+        <a
+          href="https://api.whatsapp.com/send/?phone=556132549472&text=Ol%C3%A1%21%20Vim%20pela%20Jornada%20Capilar%20Feminina%20da%20Dra.%20Maria%20Clara%20Canedo%20e%20gostaria%20de%20entender%20melhor%20meu%20caso%20e%20como%20funciona%20o%20protocolo%20para%20iniciar%20o%20tratamento.&type=phone_number&app_absent=0" data-wa-btn
+          target="_blank" rel="noopener noreferrer"
+          class="btn-gold-anim btn-full-mobile"
+        ><span></span><span></span><span></span><span></span>
+          Falar com Atendimento no WhatsApp
+        </a>
+      </div>
+    </div>
+  </section>
+
+
+  <!-- ═══════════════════════════════════════════════
+       FOOTER
+  ═══════════════════════════════════════════════ -->
+  <footer class="bg-navy border-t border-white/[0.07]" style="height:7.5rem;">
+    <div class="max-w-7xl mx-auto px-5 sm:px-8 h-full flex flex-row items-center justify-between gap-2 overflow-visible">
+      <img src="imagens/logo.webp" alt="Grand Vie" class="h-32 w-auto" style="overflow:visible;" />
+      <p class="font-montserrat text-xs text-sand/35 text-center">
+        © 2025 Grand Vie — Brasília / DF · Todos os direitos reservados
+      </p>
+      <p class="font-montserrat text-xs text-sand/30 text-center">
+        As informações apresentadas não substituem consulta médica presencial.
+      </p>
+    </div>
+  </footer>
+
+
+  <!-- ═══════════════════════════════════════════════
+       JAVASCRIPT
+  ═══════════════════════════════════════════════ -->
+  <script>
+    // ── sticky header ──
+    const header = document.getElementById('site-header');
+    window.addEventListener('scroll', () => {
+      header.classList.toggle('header-scrolled', window.scrollY > 20);
+    }, { passive: true });
+
+    // ── FAQ accordion ──
+    document.querySelectorAll('.faq-trigger').forEach(btn => {
+      btn.addEventListener('click', () => {
+        const item = btn.closest('.faq-item');
+        const answer = item.querySelector('.faq-answer');
+        const isOpen = item.classList.contains('open');
+
+        // close all
+        document.querySelectorAll('.faq-item').forEach(i => {
+          i.classList.remove('open');
+          i.querySelector('.faq-answer').classList.remove('open');
+        });
+
+        // toggle clicked
+        if (!isOpen) {
+          item.classList.add('open');
+          answer.classList.add('open');
+        }
+      });
+    });
+
+    // ── partículas douradas ──
+    (function () {
+      const canvas = document.getElementById('particles-canvas');
+      const ctx = canvas.getContext('2d');
+      let W, H, particles;
+
+      const COUNT = 55;
+      const GOLD  = [
+        'rgba(212,175,55,',   // ouro
+        'rgba(245,220,100,',  // ouro claro
+        'rgba(180,140,30,',   // ouro escuro
+        'rgba(255,240,180,',  // champanhe
+      ];
+
+      function rand(min, max) { return Math.random() * (max - min) + min; }
+
+      function createParticle() {
+        return {
+          x:     rand(0, W),
+          y:     rand(0, H),
+          r:     rand(0.6, 2.2),
+          vx:    rand(-0.18, 0.18),
+          vy:    rand(-0.28, -0.06),
+          alpha: rand(0.08, 0.45),
+          color: GOLD[Math.floor(Math.random() * GOLD.length)],
+          twinkleSpeed: rand(0.004, 0.012),
+          twinkleDir: Math.random() > 0.5 ? 1 : -1,
+          alphaBase: 0,
+          alphaAmp:  0,
+        };
+      }
+
+      function initParticle(p) {
+        p.alphaBase = rand(0.1,  0.3);
+        p.alphaAmp  = rand(0.05, 0.2);
+        p.alpha     = p.alphaBase;
+        return p;
+      }
+
+      function resize() {
+        W = canvas.width  = window.innerWidth;
+        H = canvas.height = window.innerHeight;
+        particles = Array.from({ length: COUNT }, () => initParticle(createParticle()));
+      }
+
+      function draw() {
+        ctx.clearRect(0, 0, W, H);
+
+        particles.forEach(p => {
+          // twinkle
+          p.alpha += p.twinkleSpeed * p.twinkleDir;
+          if (p.alpha > p.alphaBase + p.alphaAmp) p.twinkleDir = -1;
+          if (p.alpha < p.alphaBase - p.alphaAmp) p.twinkleDir =  1;
+
+          // move
+          p.x += p.vx;
+          p.y += p.vy;
+
+          // wrap
+          if (p.y < -4)  p.y = H + 4;
+          if (p.x < -4)  p.x = W + 4;
+          if (p.x > W+4) p.x = -4;
+
+          // draw
+          ctx.beginPath();
+          ctx.arc(p.x, p.y, p.r, 0, Math.PI * 2);
+          ctx.fillStyle = p.color + Math.min(p.alpha, 1).toFixed(3) + ')';
+          ctx.fill();
+        });
+
+        requestAnimationFrame(draw);
+      }
+
+      window.addEventListener('resize', resize);
+      resize();
+      draw();
+    })();
+
+    // ── scroll reveal ──
+    const revealEls = document.querySelectorAll('.reveal');
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(e => {
+        if (e.isIntersecting) {
+          e.target.classList.add('visible');
+          observer.unobserve(e.target);
+        }
+      });
+    }, { threshold: 0.1, rootMargin: '0px 0px -48px 0px' });
+
+    revealEls.forEach(el => observer.observe(el));
+  </script>
+
+  <!-- Meta Pixel: WhatsApp Contact Events -->
+  <script>
+    document.addEventListener('DOMContentLoaded', function() {
+      document.querySelectorAll('[data-wa-btn]').forEach(function(btn) {
+        btn.addEventListener('click', function() {
+          if (typeof fbq === 'function') {
+            fbq('track', 'Contact');
+          }
+        });
+      });
+    });
+  </script>
+
+</body>
+</html>
